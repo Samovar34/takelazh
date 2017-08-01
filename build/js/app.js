@@ -1,1 +1,26 @@
-window.onload=function(){function e(){var e=document.documentElement.scrollTop||document.body.scrollTop;t.style.display=e>d?"block":"none"}var o=document.getElementById("header"),n=document.getElementById("nav"),t=document.getElementById("up"),d=o.offsetHeight+n.offsetHeight;window.onresize=function(){d=o.offsetHeight+n.offsetHeight},window.onscroll=e,e()};
+window.onload = function () {
+    var header = document.getElementById("header"),
+        nav    = document.getElementById("nav"),
+        upLink = document.getElementById("up");
+
+    var height = header.offsetHeight + nav.offsetHeight;
+
+    window.onresize = function () {
+        height = header.offsetHeight + nav.offsetHeight;
+    }
+
+    window.onscroll = doOnScroll;
+
+    function doOnScroll() {
+        var top = document.documentElement.scrollTop || document.body.scrollTop
+        
+        if (top > height) {
+            upLink.style.display = "block";
+        } else {
+            upLink.style.display = "none";
+        }
+    }
+
+    //check
+    doOnScroll();
+}
